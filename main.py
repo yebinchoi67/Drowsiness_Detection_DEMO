@@ -88,6 +88,7 @@ def main():
         "rawPPG": [],
         "lfhf" : []
     }
+
     first_calibration = True
     prediction = 'Not predicted' # first prediction
     frame_name = 'Drowsiness detection'
@@ -178,11 +179,12 @@ def main():
         # Display features
         display_features(visualize_frame, EBW, EBH, EAR, MAR, lfhf, prediction, Timer.get_fps())
 
-        # Calibration for the first 30 seconds
+        # Calibration for the first 30 seconds                     
         if first_calibration:
-            visualize_frame = draw_calibration_text(
-                visualize_frame, "Calibration in progress,", "Please wait..."
-            )
+            if not args.use_saved_calibration:
+                visualize_frame = draw_calibration_text(
+                    visualize_frame, "Calibration in progress,", "Please wait..."
+                )
             if (data_buffer["timestamps"][-1] - data_buffer["timestamps"][0]) >= 29.5:
                 drowsiness_detector.calibrate(data_buffer)
                 prediction = drowsiness_detector.predict(data_buffer)
@@ -191,6 +193,7 @@ def main():
             # Ongoing prediction
             if (data_buffer["timestamps"][-1] - data_buffer["timestamps"][0]) >= 29.5:
                 prediction = drowsiness_detector.predict(data_buffer)
+
 
         # Display the final result
         cv2.imshow(frame_name, visualize_frame)
