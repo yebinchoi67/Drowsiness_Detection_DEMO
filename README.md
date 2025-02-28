@@ -1,2 +1,2 @@
-# Early_Drowsiness_Detection_DEMO
+# Drowsiness Detection DEMO
 Demo program of Early Drowsiness Detection
