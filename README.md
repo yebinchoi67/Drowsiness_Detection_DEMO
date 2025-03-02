@@ -17,7 +17,7 @@ While our research explores multi-class drowsiness detection, this demo focuses 
 
 
 
-## 📌 Introduction
+## 📌 Key Features
 
 - **Facial Landmark Detection**: Extracting eye aspect ratio (EAR), mouth aspect ratio (MAR), eyebrow width (EBW), and eyebrow height (EBH).
 - **Remote Photoplethysmography (PPG) Signal Processing**: Estimating heart rate and LF/HF ratio from facial videos.
